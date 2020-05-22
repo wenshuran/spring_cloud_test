@@ -1,0 +1,16 @@
+server:
+  port: ${PORT}
+spring:
+  application:
+    name: ${HOSTNAME}
+eureka:
+  instance:
+    hostname: ${HOSTNAME}
+  client:
+#    registerWithEureka: false #不注册到Eureka,不在注册中心显示¿
+    service-url:
+#      defaultZone: http://eureka01:7001/eureka
+      defaultZone: http://${EUREKA01Name}:${EUREKA01Port}/eureka/, http://${EUREKA02Name}:${EUREKA02Port}/eureka/
+feign:
+  hystrix:
+    enabled: true

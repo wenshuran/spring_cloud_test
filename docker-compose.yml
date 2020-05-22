@@ -1,0 +1,70 @@
+version: '3'
+services:
+    eureka01:
+        build: eureka
+        environment:
+          HOSTNAME: eureka01
+          PORT: 7001
+          CLUSTERName: eureka02
+          CLUSTERPort: 7002
+        ports:
+        - 7001:7001
+    eureka02:
+        build: eureka
+        environment:
+          HOSTNAME: eureka02
+          PORT: 7002
+          CLUSTERName: eureka01
+          CLUSTERPort: 7001
+        ports:
+            - 7002:7002
+    provider01:
+        build: serviceProvider
+        environment:
+          HOSTNAME: provider01
+          PORT: 8001
+          EUREKA01Name: eureka01
+          EUREKA01Port: 7001
+          EUREKA02Name: eureka02
+          EUREKA02Port: 7002
+        ports:
+        - 8001:8001
+    consumer01:
+      build: serviceConsumer
+      environment:
+        HOSTNAME: consumer01
+        PORT: 8010
+        EUREKA01Name: eureka01
+        EUREKA01Port: 7001
+        EUREKA02Name: eureka02
+        EUREKA02Port: 7002
+      ports:
+        - 8010:8010
+    zuul:
+      build: zuul
+      environment:
+        HOSTNAME: ZuulGateway
+        PORT: 8020
+        EUREKA01Name: eureka01
+        EUREKA01Port: 7001
+        EUREKA02Name: eureka02
+        EUREKA02Port: 7002
+      ports:
+        - 8020:8020
+#    db:
+#        image: mysql
+#        ports:
+#            - 3306:3306
+#        environment:
+#            MYSQL_ROOT_PASSWORD: password
+#            MYSQL_DATABASE: lms
+#            MYSQL_USER: lms
+#            MYSQL_PASSWORD: lms
+#    web:
+#        build: .
+#        depends_on:
+#            - db
+#        environment:
+#            HOSTNAME: db
+#        ports:
+#        - 8080:8080

@@ -1,0 +1,10 @@
+server:
+  port: ${PORT}
+spring:
+  application:
+    name: ${HOSTNAME}
+  cloud:
+    config:
+      server:
+        git:
+          uri:

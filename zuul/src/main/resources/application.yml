@@ -1,0 +1,14 @@
+server:
+  port: ${PORT}
+spring:
+  application:
+    name: ${HOSTNAME}
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${EUREKA01Name}:${EUREKA01Port}/eureka/, http://${EUREKA02Name}:${EUREKA02Port}/eureka/
+zuul:
+  routes:
+    consumer01: /user01/**
+#  prefix: /zuul
+#  ignored-services: "*"  #让其它链接失效
