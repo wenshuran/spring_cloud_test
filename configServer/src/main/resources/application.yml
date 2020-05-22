@@ -11,7 +11,6 @@ spring:
           uri: https://github.com/wenshuran/spring_cloud_test.git
           search-paths: config
 
-
 eureka:
   client:
     service-url:

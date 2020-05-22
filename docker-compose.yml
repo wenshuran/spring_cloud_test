@@ -51,6 +51,26 @@ services:
         EUREKA02Port: 7002
       ports:
         - 8020:8020
+    config-server:
+      build: configServer
+      environment:
+        HOSTNAME: configServer
+        PORT: 8030
+        EUREKA01Name: eureka01
+        EUREKA01Port: 7001
+        EUREKA02Name: eureka02
+        EUREKA02Port: 7002
+      ports:
+        - 8030:8030
+    config-client:
+      build: configClient
+      depends_on:
+        - config-server
+      environment:
+        HOSTNAME: configClient
+        PORT: 8035
+      ports:
+      - 8035:8035
 #    db:
 #        image: mysql
 #        ports:
