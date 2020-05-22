@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="PASSWORD" host="59.110.48.122" id="f1c62635-1f67-410c-b1fa-f5338b4e1604" port="22" customName="aliyun_ssh" nameFormat="CUSTOM" username="root" />
+      <sshConfig authType="PASSWORD" host="59.110.48.122" id="b9c52829-09c5-47e2-b772-53c384995a67" port="22" customName="aliyun_sftp" nameFormat="CUSTOM" username="mysftp" />
+    </configs>
+  </component>
+</project>

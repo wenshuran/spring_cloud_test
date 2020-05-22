@@ -1,5 +1,6 @@
 server:
   port: ${PORT}
+
 spring:
   application:
     name: ${HOSTNAME}
@@ -7,4 +8,11 @@ spring:
     config:
       server:
         git:
-          uri:
+          uri: https://github.com/wenshuran/spring_cloud_test.git
+          search-paths: config
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${EUREKA01Name}:${EUREKA01Port}/eureka/, http://${EUREKA02Name}:${EUREKA02Port}/eureka/
