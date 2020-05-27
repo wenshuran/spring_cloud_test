@@ -1,12 +1,13 @@
 server:
-  port: ${PORT}
+  port: 8020
 spring:
   application:
-    name: ${HOSTNAME}
+    name: ZuulGateway
 eureka:
   client:
     service-url:
-      defaultZone: http://${EUREKA01Name}:${EUREKA01Port}/eureka/, http://${EUREKA02Name}:${EUREKA02Port}/eureka/
+      defaultZone: http://localhost:7001/eureka/
+#      defaultZone: http://${EUREKA01Name}:${EUREKA01Port}/eureka/, http://${EUREKA02Name}:${EUREKA02Port}/eureka/
 zuul:
   routes:
     consumer01: /user01/**

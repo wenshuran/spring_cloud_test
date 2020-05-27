@@ -1,21 +1,23 @@
+#Docker
+#server:
+#  port: ${PORT}
+#eureka:
+#  instance:
+#    hostname: ${HOSTNAME}
+#  client:
+#    register-with-eureka: false #是否要注册到eureka
+#    fetch-registry: false #表示是否从Eureka Server获取注册信息
+#    service-url:
+#      defaultZone: http://${CLUSTERName}:${CLUSTERPort}/eureka/
+
+#Maven
 server:
-  port: ${PORT}
+  port: 7001
 eureka:
   instance:
-    hostname: ${HOSTNAME}
+    hostname: eureka01
   client:
     register-with-eureka: false #是否要注册到eureka
     fetch-registry: false #表示是否从Eureka Server获取注册信息
     service-url:
-      defaultZone: http://${CLUSTERName}:${CLUSTERPort}/eureka/
-
-#server:
-#  port: 7001
-#eureka:
-#  instance:
-#    hostname: eureka01
-#  client:
-#    register-with-eureka: false #是否要注册到eureka
-#    fetch-registry: false #表示是否从Eureka Server获取注册信息
-##    service-url:
-##      defaultZone: http://localhost:7001/eureka/
+      defaultZone: http://localhost:7001/eureka/

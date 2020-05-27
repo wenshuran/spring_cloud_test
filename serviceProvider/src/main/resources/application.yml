@@ -2,7 +2,7 @@ server:
   port: 8001
 spring:
   application:
-    name: ${HOSTNAME}
+    name: provider01
   datasource:
     url: jdbc:h2:mem:testdb
     driver-class-name: org.h2.Driver
@@ -16,12 +16,23 @@ spring:
     console:
       enabled: true
 
+#Docker
+#eureka:
+#  instance:
+#    hostname: ${HOSTNAME}
+#  client:
+#    service-url:
+#      defaultZone: http://${EUREKA01Name}:${EUREKA01Port}/eureka/, http://${EUREKA02Name}:${EUREKA02Port}/eureka/
+#instance:
+#  prefer-ip-address: true #显示客户端真实ip
+
+#Maven
 eureka:
   instance:
-    hostname: ${HOSTNAME}
+    hostname: provider01
   client:
     service-url:
-      defaultZone: http://${EUREKA01Name}:${EUREKA01Port}/eureka/, http://${EUREKA02Name}:${EUREKA02Port}/eureka/
+      defaultZone: http://localhost:7001/eureka/
 instance:
   prefer-ip-address: true #显示客户端真实ip
 

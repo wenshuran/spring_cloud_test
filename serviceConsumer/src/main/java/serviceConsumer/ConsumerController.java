@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/consumer")
 public class ConsumerController {
     @Autowired
-    private UserClient userClient;
+    private UserClient userClient  ;
 
     @GetMapping("/user/{id}")
     public User getUser(@PathVariable("id") long id){

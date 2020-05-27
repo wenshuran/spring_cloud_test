@@ -20,6 +20,8 @@ services:
             - 7002:7002
     provider01:
         build: serviceProvider
+        depends_on:
+          - eureka01
         environment:
           HOSTNAME: provider01
           PORT: 8001
@@ -31,6 +33,8 @@ services:
         - 8001:8001
     consumer01:
       build: serviceConsumer
+      depends_on:
+        - eureka01
       environment:
         HOSTNAME: consumer01
         PORT: 8010
@@ -42,6 +46,8 @@ services:
         - 8010:8010
     zuul:
       build: zuul
+      depends_on:
+        - eureka01
       environment:
         HOSTNAME: ZuulGateway
         PORT: 8020
@@ -53,8 +59,10 @@ services:
         - 8020:8020
     config-server:
       build: configServer
+      depends_on:
+        - eureka01
       environment:
-        HOSTNAME: configServer
+        HOSTNAME: config-server
         PORT: 8030
         EUREKA01Name: eureka01
         EUREKA01Port: 7001
@@ -67,8 +75,14 @@ services:
       depends_on:
         - config-server
       environment:
-        HOSTNAME: configClient
+        HOSTNAME: config-client
         PORT: 8035
+        CONFIGSERVER: config-server
+        CONFIGPORT: 8030
+        EUREKA01Name: eureka01
+        EUREKA01Port: 7001
+        EUREKA02Name: eureka02
+        EUREKA02Port: 7002
       ports:
       - 8035:8035
 #    db:
